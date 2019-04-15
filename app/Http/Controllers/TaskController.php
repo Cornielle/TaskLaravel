@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Task;
 use Illuminate\Http\Request;
+
 
 class TaskController extends Controller
 {
@@ -16,6 +18,7 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, ['body' => 'required|max:500']);
+        return Task::create(['body' => request('body')]);
     }
     public function edit(Request $request)
     {
